@@ -9,7 +9,7 @@
   "trustedDependencies": ["seatnow-cf-prebuild"],
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "node scripts/vite-build.mjs",
     "build:dev": "vite build --mode development",
     "deploy": "npm run build && npx wrangler deploy --config dist/server/wrangler.json",
     "cf:deploy": "npm run build && npx wrangler deploy --config dist/server/wrangler.json",

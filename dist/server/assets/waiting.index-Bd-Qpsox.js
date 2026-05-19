@@ -1,10 +1,10 @@
-import { S as reactExports, J as jsxRuntimeExports } from "./server-DbFEfZ8R-BI0li19e.js";
-import { L as Link } from "./router-Dq4Yi7A5-BEoTr15r.js";
-import { A as AppShell, C as Clock } from "./AppShell-DIzGv6BN-CHbiqRc7.js";
-import { s as supabase } from "./client-BooYdwAs-Jckt6Bjm.js";
-import { f as getTableLabel, g as getSeatLabel } from "./table-layout-DP4mTr6k-DP4mTr6k.js";
-import { i as isWaitingPreferenceSchemaError, n as normalizeWaitingPreference } from "./waiting-preferences-DPgt-__X-DPgt-__X.js";
-import { g as getStoredWaitingEntryIds } from "./my-waiting-entries-mW30yyoy-mW30yyoy.js";
+import { S as reactExports, J as jsxRuntimeExports } from "./server-DbFEfZ8R.js";
+import { L as Link } from "./router-Dq4Yi7A5.js";
+import { A as AppShell, C as Clock } from "./AppShell-DIzGv6BN.js";
+import { s as supabase } from "./client-BooYdwAs.js";
+import { f as getTableLabel, g as getSeatLabel } from "./table-layout-DP4mTr6k.js";
+import { i as isWaitingPreferenceSchemaError, n as normalizeWaitingPreference } from "./waiting-preferences-DPgt-__X.js";
+import { g as getStoredWaitingEntryIds } from "./my-waiting-entries-mW30yyoy.js";
 import "node:async_hooks";
 import "node:stream/web";
 import "node:stream";

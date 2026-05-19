@@ -1,28 +1,23 @@
-/**
- * Cloudflare Workers Builds often runs `npx wrangler deploy` without `npm run build`.
- * TanStack Start needs Vite output in dist/server/ before Wrangler can bundle.
- */
-import { existsSync } from "node:fs";
+import { copyFileSync, existsSync } from "node:fs";
 import { execSync } from "node:child_process";
 
-const builtConfig = "dist/server/wrangler.json";
+const built = "dist/server/index.js";
 
-function isCloudflareWorkersBuild() {
+function onCi() {
   if (process.env.WORKERS_CI === "1") return true;
   if (process.env.CI === "true" || process.env.CI === "1") return true;
-  // Workers Builds runs in /opt/buildhome/ (see wrangler error logs)
   if (process.cwd().includes("buildhome")) return true;
   return false;
 }
 
-if (!isCloudflareWorkersBuild()) {
+if (!onCi()) {
   process.exit(0);
 }
 
-if (existsSync(builtConfig)) {
-  console.log("[ci-predeploy] dist/server/wrangler.json exists — skip build.");
-  process.exit(0);
+if (!existsSync(built)) {
+  console.log("[ci-predeploy] running vite-build.mjs …");
+  execSync("node scripts/vite-build.mjs", { stdio: "inherit", shell: true });
+} else {
+  copyFileSync("wrangler.deploy.jsonc", "wrangler.jsonc");
+  copyFileSync("wrangler.deploy.jsonc", "wrangler.json");
 }
-
-console.log("[ci-predeploy] Building for Cloudflare (vite build)…");
-execSync("npm run build", { stdio: "inherit" });

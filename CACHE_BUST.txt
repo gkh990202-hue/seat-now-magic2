@@ -1,2 +1,2 @@
-cache-bust=4
+cache-bust=5
 # Bump when Cloudflare keeps using stale build cache. Clear build cache in dashboard after push.

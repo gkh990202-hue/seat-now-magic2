@@ -1,13 +1,13 @@
-import { S as reactExports, J as jsxRuntimeExports } from "./server-DbFEfZ8R-BI0li19e.js";
-import { a as Route$2, j as useNavigate, u as useAppSession, L as Link, g as createLucideIcon } from "./router-Dq4Yi7A5-BEoTr15r.js";
-import { A as AppShell } from "./AppShell-DIzGv6BN-CHbiqRc7.js";
-import { s as supabase } from "./client-BooYdwAs-Jckt6Bjm.js";
-import { f as getTableLabel, g as getSeatLabel } from "./table-layout-DP4mTr6k-DP4mTr6k.js";
-import { i as isWaitingPreferenceSchemaError, n as normalizeWaitingPreference, e as encodeFallbackWaitingPhone } from "./waiting-preferences-DPgt-__X-DPgt-__X.js";
-import { r as rememberWaitingEntry, f as forgetWaitingEntry } from "./my-waiting-entries-mW30yyoy-mW30yyoy.js";
-import { g as getWaitingNotificationChannelName, W as WAITING_NOTIFICATION_EVENT, C as Check } from "./waiting-notifications-DWE5T3WN-Ck-BO8o5.js";
-import { C as ChevronLeft } from "./chevron-left-C8nU7YTb-DPC-SO6E.js";
-import { B as Bell } from "./bell-DUlaBP8w-Cl1MQZWd.js";
+import { S as reactExports, J as jsxRuntimeExports } from "./server-DbFEfZ8R.js";
+import { g as createLucideIcon, a as Route, j as useNavigate, u as useAppSession, L as Link } from "./router-Dq4Yi7A5.js";
+import { A as AppShell } from "./AppShell-DIzGv6BN.js";
+import { s as supabase } from "./client-BooYdwAs.js";
+import { f as getTableLabel, g as getSeatLabel } from "./table-layout-DP4mTr6k.js";
+import { i as isWaitingPreferenceSchemaError, n as normalizeWaitingPreference, e as encodeFallbackWaitingPhone } from "./waiting-preferences-DPgt-__X.js";
+import { r as rememberWaitingEntry, f as forgetWaitingEntry } from "./my-waiting-entries-mW30yyoy.js";
+import { g as getWaitingNotificationChannelName, W as WAITING_NOTIFICATION_EVENT, C as Check } from "./waiting-notifications-DWE5T3WN.js";
+import { C as ChevronLeft } from "./chevron-left-C8nU7YTb.js";
+import { B as Bell } from "./bell-DUlaBP8w.js";
 import "node:async_hooks";
 import "node:stream/web";
 import "node:stream";
@@ -19,13 +19,13 @@ const X = createLucideIcon("x", __iconNode);
 function WaitingPage() {
   const {
     storeId
-  } = Route$2.useParams();
+  } = Route.useParams();
   const {
     people,
     entryId,
     mode,
     preferredTableId
-  } = Route$2.useSearch();
+  } = Route.useSearch();
   const navigate = useNavigate();
   const session = useAppSession();
   const lockedSeatingPreference = mode === "SPECIFIC" || preferredTableId ? "SPECIFIC" : mode === "ANY" ? "ANY" : null;

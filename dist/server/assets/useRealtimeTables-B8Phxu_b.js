@@ -1,5 +1,5 @@
-import { S as reactExports, J as jsxRuntimeExports } from "./server-DbFEfZ8R-BI0li19e.js";
-import { s as supabase } from "./client-BooYdwAs-Jckt6Bjm.js";
+import { J as jsxRuntimeExports, S as reactExports } from "./server-DbFEfZ8R.js";
+import { s as supabase } from "./client-BooYdwAs.js";
 const colorMap = {
   EMPTY: "text-status-empty",
   OCCUPIED: "text-status-occupied",

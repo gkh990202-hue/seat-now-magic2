@@ -1,4 +1,4 @@
-import { existsSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync } from "node:fs";
 import { execSync } from "node:child_process";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -16,30 +16,18 @@ if (!onCloudflare) {
   process.exit(0);
 }
 
+console.log("[cf-prebuild] Cloudflare CI — ensure dist + deploy wrangler config");
+
 if (!existsSync(built)) {
-  console.log("[cf-prebuild] Running vite build…");
-  execSync("npm run build", {
+  execSync("node scripts/vite-build.mjs", {
     cwd: root,
     stdio: "inherit",
     env: process.env,
     shell: true,
   });
+} else {
+  copyFileSync(join(root, "wrangler.deploy.jsonc"), join(root, "wrangler.jsonc"));
+  copyFileSync(join(root, "wrangler.deploy.jsonc"), join(root, "wrangler.json"));
 }
 
-// npx wrangler deploy reads wrangler.jsonc — point at prebuilt worker, not src/server.ts
-const deployConfig = `{
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "seat-now-magic2",
-  "compatibility_date": "2025-09-24",
-  "compatibility_flags": ["nodejs_compat"],
-  "main": "dist/server/index.js",
-  "no_bundle": true,
-  "assets": {
-    "directory": "dist/client"
-  }
-}
-`;
-
-writeFileSync(join(root, "wrangler.jsonc"), deployConfig);
-writeFileSync(join(root, "wrangler.json"), deployConfig);
-console.log("[cf-prebuild] wrangler config → dist/server/index.js");
+console.log("[cf-prebuild] ready for npx wrangler deploy");
