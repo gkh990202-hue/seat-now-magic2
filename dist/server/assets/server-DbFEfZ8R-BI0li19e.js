@@ -1,7 +1,7 @@
 import { AsyncLocalStorage as AsyncLocalStorage$1 } from "node:async_hooks";
 import { ReadableStream as ReadableStream$1 } from "node:stream/web";
-import { Readable, PassThrough } from "node:stream";
-function _mergeNamespaces(n2, m2) {
+import { PassThrough, Readable } from "node:stream";
+function _mergeNamespaces$1(n2, m2) {
   for (var i = 0; i < m2.length; i++) {
     const e = m2[i];
     if (typeof e !== "string" && !Array.isArray(e)) {
@@ -460,7 +460,7 @@ function requireReact() {
 }
 var reactExports = requireReact();
 const React2 = /* @__PURE__ */ getDefaultExportFromCjs(reactExports);
-const React = /* @__PURE__ */ _mergeNamespaces({
+const React = /* @__PURE__ */ _mergeNamespaces$1({
   __proto__: null,
   default: React2
 }, [reactExports]);
@@ -1969,7 +1969,7 @@ function D(e) {
 }
 var L = "__SEROVAL_REFS__", le = "$R", Ie = `self.${le}`;
 function dn(e) {
-  return e == null ? `${Ie}=${Ie}||[]` : `(${Ie}=${Ie}||{})["${y(e)}"]=[]`;
+  return `(${Ie}=${Ie}||{})["${y(e)}"]=[]`;
 }
 var Er = /* @__PURE__ */ new Map(), U = /* @__PURE__ */ new Map();
 function Ir(e) {
@@ -15994,7 +15994,7 @@ function getResponse() {
 }
 var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 async function getStartManifest(matchedRoutes) {
-  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-CKAdEQox.js");
+  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-CKAdEQox-CKAdEQox.js");
   const startManifest = tsrStartManifest();
   const rootRoute = startManifest.routes[rootRouteId] = startManifest.routes[rootRouteId] || {};
   rootRoute.assets = rootRoute.assets || [];
@@ -17072,7 +17072,6 @@ function getStartResponseHeaders(opts) {
   }));
 }
 var entriesPromise;
-var hasWarnedMissingCsrfMiddleware = false;
 var defaultCsrfMiddleware = createCsrfMiddleware({ filter: (ctx) => ctx.handlerType === "serverFn" });
 var getCachedBaseManifest = createCachedBaseManifestLoader(() => getStartManifest());
 var getProdBaseManifest = () => getCachedBaseManifest();
@@ -17080,9 +17079,9 @@ var getBaseManifest = getProdBaseManifest;
 var createEarlyHintsForRequest = createEarlyHintsCollector;
 async function loadEntries() {
   const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-    import("./router-Dq4Yi7A5.js").then((n2) => n2.h),
-    import("./start-2wUrbIWR.js"),
-    import("./__23tanstack-start-plugin-adapters-Cwee5PKy.js")
+    import("./router-Dq4Yi7A5-BEoTr15r.js").then((n2) => n2.h),
+    import("./start-2wUrbIWR-K9DI-bxD.js"),
+    import("./__23tanstack-start-plugin-adapters-Cwee5PKy-Cwee5PKy.js")
   ]);
   return {
     routerEntry,
@@ -17093,31 +17092,6 @@ async function loadEntries() {
 function getEntries() {
   if (!entriesPromise) entriesPromise = loadEntries();
   return entriesPromise;
-}
-function warnMissingCsrfMiddlewareOnce() {
-  if (hasWarnedMissingCsrfMiddleware) return;
-  hasWarnedMissingCsrfMiddleware = true;
-  console.warn(`TanStack Start server functions are not protected by the CSRF middleware.
-
-Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
-
-Add the CSRF middleware in src/start.ts:
-
-  const csrfMiddleware = createCsrfMiddleware({
-    filter: (ctx) => ctx.handlerType === 'serverFn',
-  })
-
-  export const startInstance = createStart(() => ({
-    requestMiddleware: [csrfMiddleware],
-  }))
-
-If you intentionally handle CSRF another way, disable this warning:
-
-  tanstackStart({
-    serverFns: {
-      disableCsrfMiddlewareWarning: true,
-    },
-  })`);
 }
 var ROUTER_BASEPATH = "/";
 var SERVER_FN_BASE = "/_serverFn/";

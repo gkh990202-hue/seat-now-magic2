@@ -1,10 +1,10 @@
-import { S as reactExports, J as jsxRuntimeExports } from "./server-DbFEfZ8R.js";
-import { g as createLucideIcon, b as Route, j as useNavigate } from "./router-Dq4Yi7A5.js";
-import { A as AppShell } from "./AppShell-DIzGv6BN.js";
-import { a as useRealtimeTables, S as StatusDot, s as statusLabel } from "./useRealtimeTables-B8Phxu_b.js";
-import { s as supabase } from "./client-BooYdwAs.js";
-import { b as getStoredDoorPosition, d as getStoredDoorRotation, e as getStoredTableRotations, f as getTableLabel, g as getSeatLabel, h as getTablePosition, i as getTableSize } from "./table-layout-DP4mTr6k.js";
-import { C as ChevronLeft } from "./chevron-left-C8nU7YTb.js";
+import { S as reactExports, J as jsxRuntimeExports } from "./server-DbFEfZ8R-BI0li19e.js";
+import { b as Route$1, j as useNavigate, g as createLucideIcon } from "./router-Dq4Yi7A5-BEoTr15r.js";
+import { A as AppShell } from "./AppShell-DIzGv6BN-CHbiqRc7.js";
+import { a as useRealtimeTables, S as StatusDot, s as statusLabel } from "./useRealtimeTables-B8Phxu_b-7QteXk0b.js";
+import { s as supabase } from "./client-BooYdwAs-Jckt6Bjm.js";
+import { b as getStoredDoorPosition, d as getStoredDoorRotation, e as getStoredTableRotations, f as getTableLabel, g as getSeatLabel, h as getTablePosition, i as getTableSize } from "./table-layout-DP4mTr6k-DP4mTr6k.js";
+import { C as ChevronLeft } from "./chevron-left-C8nU7YTb-DPC-SO6E.js";
 import "node:async_hooks";
 import "node:stream/web";
 import "node:stream";
@@ -38,7 +38,7 @@ const tableBg = {
 function StorePage() {
   const {
     storeId
-  } = Route.useParams();
+  } = Route$1.useParams();
   const navigate = useNavigate();
   const {
     tables,

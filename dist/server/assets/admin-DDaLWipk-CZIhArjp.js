@@ -1,12 +1,12 @@
-import { S as reactExports, J as jsxRuntimeExports, R as React, a as React2 } from "./server-DbFEfZ8R.js";
-import { g as createLucideIcon, r as reactDomExports, R as ReactDOM, _ as __assign, c as __rest, d as __spreadArray, u as useAppSession, L as Link, t as toast, i as runSetTableStatus } from "./router-Dq4Yi7A5.js";
-import { A as AppShell } from "./AppShell-DIzGv6BN.js";
-import { u as useFirstRestaurant, a as useRealtimeTables, s as statusLabel, S as StatusDot } from "./useRealtimeTables-B8Phxu_b.js";
-import { s as supabase } from "./client-BooYdwAs.js";
-import { i as isWaitingPreferenceSchemaError, n as normalizeWaitingPreference } from "./waiting-preferences-DPgt-__X.js";
-import { C as Check, g as getWaitingNotificationChannelName, W as WAITING_NOTIFICATION_EVENT } from "./waiting-notifications-DWE5T3WN.js";
-import { b as getStoredDoorPosition, d as getStoredDoorRotation, h as getTablePosition, i as getTableSize, e as getStoredTableRotations, f as getTableLabel, g as getSeatLabel, a as clampTablePosition, c as clampDoorPosition, s as saveDoorPosition, k as saveTableRotation, j as saveDoorRotation, n as normalizeTableRotation } from "./table-layout-DP4mTr6k.js";
-import { C as ChevronRight } from "./chevron-right-B6tYBXPs.js";
+import { S as reactExports, J as jsxRuntimeExports, R as React, a as React2 } from "./server-DbFEfZ8R-BI0li19e.js";
+import { u as useAppSession, L as Link, g as createLucideIcon, t as toast, i as runSetTableStatus, R as ReactDOM, r as reactDomExports, _ as __assign, c as __rest, d as __spreadArray } from "./router-Dq4Yi7A5-BEoTr15r.js";
+import { A as AppShell } from "./AppShell-DIzGv6BN-CHbiqRc7.js";
+import { u as useFirstRestaurant, a as useRealtimeTables, s as statusLabel, S as StatusDot } from "./useRealtimeTables-B8Phxu_b-7QteXk0b.js";
+import { s as supabase } from "./client-BooYdwAs-Jckt6Bjm.js";
+import { i as isWaitingPreferenceSchemaError, n as normalizeWaitingPreference } from "./waiting-preferences-DPgt-__X-DPgt-__X.js";
+import { g as getWaitingNotificationChannelName, W as WAITING_NOTIFICATION_EVENT, C as Check } from "./waiting-notifications-DWE5T3WN-Ck-BO8o5.js";
+import { b as getStoredDoorPosition, d as getStoredDoorRotation, h as getTablePosition, i as getTableSize, e as getStoredTableRotations, f as getTableLabel, g as getSeatLabel, a as clampTablePosition, c as clampDoorPosition, s as saveDoorPosition, k as saveTableRotation, j as saveDoorRotation, n as normalizeTableRotation } from "./table-layout-DP4mTr6k-DP4mTr6k.js";
+import { C as ChevronRight } from "./chevron-right-B6tYBXPs-DLaqdjDz.js";
 import "node:async_hooks";
 import "node:stream/web";
 import "node:stream";
@@ -4202,7 +4202,7 @@ function RemoveScrollSideCar(props) {
   reactExports.useEffect(function() {
     if (props.inert) {
       document.body.classList.add("block-interactivity-".concat(id));
-      var allow_1 = __spreadArray([props.lockRef.current], (props.shards || []).map(extractRef), true).filter(Boolean);
+      var allow_1 = __spreadArray([props.lockRef.current], (props.shards || []).map(extractRef)).filter(Boolean);
       allow_1.forEach(function(el) {
         return el.classList.add("allow-interactivity-".concat(id));
       });

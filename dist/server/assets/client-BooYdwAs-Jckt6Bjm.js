@@ -1,4 +1,4 @@
-import { f as createClient } from "./router-Dq4Yi7A5.js";
+import { f as createClient } from "./router-Dq4Yi7A5-BEoTr15r.js";
 function createSupabaseClient() {
   const SUPABASE_URL = "https://lsargrvgzvllkcqejukt.supabase.co";
   const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_poFKsmjT0CCK9jEiKF41_Q_w3XBYPs0";
