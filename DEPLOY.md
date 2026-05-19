@@ -1,60 +1,55 @@
 # Cloudflare Workers 배포 (SeatNow / 온반)
 
-이 프로젝트는 **정적 Pages**가 아니라 **TanStack Start + Cloudflare Worker**입니다.
+## 중요: Lovable / Cloudflare에서 반드시 할 일
 
-저장소에 **`dist/`** 와 **`.wrangler/deploy/config.json`** 이 포함되어 있어, Cloudflare가 `npx wrangler deploy`만 실행해도 배포됩니다.
+GitHub(`gkh990202-hue/seat-now-magic2` **main**)에는 수정이 올라가 있지만,  
+로그에 `#tanstack-router-entry` 오류가 나면 **예전 캐시·예전 Deploy command**를 쓰는 것입니다.
 
-코드를 수정한 뒤에는 로컬에서 `npm run build` 후 **`dist/`를 다시 commit·push** 하세요.
+### 1) Build cache 삭제 (필수)
 
-## 배포 실패 원인
+Cloudflare 대시보드 → Worker → **Settings → Build → Build cache → Clear cache**
 
-로그에 `Executing user deploy command: npx wrangler deploy`만 있고 **빌드 단계가 없으면**  
-Wrangler가 `wrangler.jsonc`의 `src/server.ts`를 직접 번들링하려다 아래 오류가 납니다.
+### 2) Deploy command 변경 (필수)
 
-- `#tanstack-router-entry`
-- `tanstack-start-manifest:v`
-- 기타 TanStack Start 가상 모듈
-
-## Cloudflare 대시보드 설정 (권장)
-
-Workers & Pages → 해당 Worker → **Settings → Build**
-
-| 항목 | 값 |
-|------|-----|
-| **Deploy command** | `npm run deploy` |
-
-또는 분리:
-
-| Build command | `npm run build` |
-| Deploy command | `npx wrangler deploy --config dist/server/wrangler.json` |
-
-저장 후 **Retry deployment**를 누르세요.
-
-### Deploy command를 바꿀 수 없는 경우
-
-`dependencies`의 `wrangler`(shim)가 `npx wrangler deploy` 실행 시 자동으로 `vite build` 후 배포합니다.  
-성공 로그에 **`[wrangler-shim] Running vite build before deploy…`** 가 보여야 합니다.
-
-`bun.lock`은 사용하지 않습니다 (`package-lock.json` + npm install).
-
-## 환경 변수 (Settings → Variables)
-
-런타임(Production)에 추가:
-
-| 이름 | 설명 |
-|------|------|
-| `VITE_SUPABASE_URL` | Supabase 프로젝트 URL |
-| `VITE_SUPABASE_PUBLISHABLE_KEY` | anon / publishable key |
-| `SUPABASE_URL` | 위와 동일 URL |
-| `SUPABASE_PUBLISHABLE_KEY` | 위와 동일 key |
-
-빌드 시에도 Vite가 `VITE_*`를 읽으므로, **Build variables**에도 같은 `VITE_*` 두 개를 넣는 것을 권장합니다.
-
-## 로컬에서 확인
+**Settings → Build → Deploy command** 를 아래 **한 줄**로 바꿉니다:
 
 ```bash
-npm run build
-npm run deploy
+npm run cf:deploy
 ```
 
-배포 URL은 Cloudflare Worker 이름(`seat-now-magic2`) 기준 `*.workers.dev`입니다.
+또는:
+
+```bash
+npm run build && npx wrangler deploy --config dist/server/wrangler.json
+```
+
+**하지 말 것:** `npx wrangler deploy` 만 두기 (소스 번들링 → TanStack 오류)
+
+### 3) 연결 저장소 확인
+
+- Repository: `gkh990202-hue/seat-now-magic2`
+- Branch: `main`
+- Lovable에서 배포 중이면, Lovable 프로젝트가 **이 GitHub repo와 동기화**돼 있는지 확인
+
+### 4) 성공 로그
+
+- `[deploy-cloudflare]` 또는 `vite build` 출력
+- `Attaching additional modules` / `Total Upload:`
+- `#tanstack-router-entry` **없음**
+
+---
+
+## 로컬 배포
+
+```bash
+npm run cf:deploy
+```
+
+코드 수정 후 `dist/`를 커밋하지 않으려면 위 명령만 쓰면 됩니다.
+
+## 환경 변수 (Production)
+
+- `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`
+- `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`
+
+Build variables에도 `VITE_*` 두 개 권장.
