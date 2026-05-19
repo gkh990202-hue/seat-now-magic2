@@ -26,9 +26,6 @@ dist-ssr
 !.wrangler/deploy/config.json
 .dev.vars
 
-# Use npm on CI (package-lock.json); avoid bun.lock overriding install
-bun.lock
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
