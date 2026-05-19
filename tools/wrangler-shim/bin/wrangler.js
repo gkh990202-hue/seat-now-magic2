@@ -7,6 +7,7 @@ const { createRequire } = require("node:module");
 const projectRequire = createRequire(path.join(process.cwd(), "package.json"));
 const shimRequire = createRequire(path.join(__dirname, "..", "package.json"));
 
+const builtEntry = "dist/server/index.js";
 const builtConfig = "dist/server/wrangler.json";
 const args = process.argv.slice(2);
 const isDeploy = args[0] === "deploy";
@@ -16,14 +17,9 @@ function run(cmd, cmdArgs) {
   process.exit(result.status ?? 1);
 }
 
-if (isDeploy && !existsSync(builtConfig)) {
-  console.log("[wrangler-shim] Running vite build before deploy…");
-  const viteBin = path.join(process.cwd(), "node_modules", "vite", "bin", "vite.js");
-  if (!existsSync(viteBin)) {
-    console.error("[wrangler-shim] vite not found — run npm install first.");
-    process.exit(1);
-  }
-  const build = spawnSync(process.execPath, [viteBin, "build"], {
+if (isDeploy && !existsSync(builtEntry)) {
+  console.log("[wrangler-shim] Running scripts/vite-build.mjs …");
+  const build = spawnSync(process.execPath, ["scripts/vite-build.mjs"], {
     stdio: "inherit",
     env: process.env,
     cwd: process.cwd(),
