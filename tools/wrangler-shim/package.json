@@ -1,0 +1,13 @@
+{
+  "name": "wrangler",
+  "version": "4.84.1",
+  "private": true,
+  "description": "Builds TanStack Start output before forwarding to wrangler",
+  "bin": {
+    "wrangler": "./bin/wrangler.js",
+    "wrangler2": "./bin/wrangler.js"
+  },
+  "dependencies": {
+    "wrangler-upstream": "npm:wrangler@4.84.1"
+  }
+}

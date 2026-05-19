@@ -27,12 +27,12 @@ Workers & Pages → 해당 Worker → **Settings → Build**
 
 저장 후 **Retry deployment**를 누르세요.
 
-### 대시보드를 못 바꾸는 경우
+### Deploy command를 바꿀 수 없는 경우
 
-`package.json`의 `postinstall`이 Cloudflare CI(`WORKERS_CI=1`)에서 자동으로 `npm run build`를 실행합니다.  
-Deploy command가 `npx wrangler deploy`여도, **이 변경을 GitHub에 push한 뒤** 재배포하면 동작해야 합니다.
+`dependencies`의 `wrangler`(shim)가 `npx wrangler deploy` 실행 시 자동으로 `vite build` 후 배포합니다.  
+성공 로그에 **`[wrangler-shim] Running vite build before deploy…`** 가 보여야 합니다.
 
-로그에 `Executing user deploy command: npx wrangler deploy`만 보이면 대시보드는 아직 기본값입니다.
+`bun.lock`은 사용하지 않습니다 (`package-lock.json` + npm install).
 
 ## 환경 변수 (Settings → Variables)
 
