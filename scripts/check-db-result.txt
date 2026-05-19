@@ -1,0 +1,19 @@
+﻿{
+  "ok": true,
+  "url": "https://zuwgfdxwuyijbxiqqkxs.supabase.co",
+  "restaurants": 1,
+  "restaurantNames": [
+    "?깆닔 ?쇰찘怨듬갑"
+  ],
+  "tables": 10,
+  "tableStatusCounts": {
+    "EMPTY": 10
+  },
+  "rpc": {
+    "tested": true,
+    "ok": false,
+    "error": "Could not find the function public.set_table_status(p_new_status, p_payload, p_source, p_table_id) in the schema cache",
+    "hint": "Run supabase/apply-fix.sql",
+    "sample": null
+  }
+}
