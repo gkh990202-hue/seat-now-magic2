@@ -1,7 +1,10 @@
 # Cloudflare Workers 배포 (SeatNow / 온반)
 
-이 프로젝트는 **정적 Pages**가 아니라 **TanStack Start + Cloudflare Worker**입니다.  
-`vite build`로 `dist/server/`·`dist/client/`를 만든 뒤 Worker로 배포해야 합니다.
+이 프로젝트는 **정적 Pages**가 아니라 **TanStack Start + Cloudflare Worker**입니다.
+
+저장소에 **`dist/`** 와 **`.wrangler/deploy/config.json`** 이 포함되어 있어, Cloudflare가 `npx wrangler deploy`만 실행해도 배포됩니다.
+
+코드를 수정한 뒤에는 로컬에서 `npm run build` 후 **`dist/`를 다시 commit·push** 하세요.
 
 ## 배포 실패 원인
 

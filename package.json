@@ -5,6 +5,7 @@
     "src/lib/error-capture.ts"
   ],
   "type": "module",
+  "packageManager": "npm@10.9.2",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",

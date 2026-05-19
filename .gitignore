@@ -8,7 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
+# dist/ is committed so Cloudflare can deploy with `npx wrangler deploy` without a separate build step
+dist/server/.dev.vars
 dist-ssr
 .output
 .vinxi
@@ -20,7 +21,9 @@ dist-ssr
 !.env.example
 
 # Wrangler / Cloudflare
-.wrangler/
+.wrangler/*
+!.wrangler/deploy/
+!.wrangler/deploy/config.json
 .dev.vars
 
 # Use npm on CI (package-lock.json); avoid bun.lock overriding install

@@ -1,0 +1,1 @@
+import{f as n}from"./index-r297J3aV.js";const c=[["path",{d:"M20 6 9 17l-5-5",key:"1gmf2c"}]],i=n("check",c),o="entry-called";function a(t){return`waiting-notification:${t}`}export{i as C,o as W,a as g};
